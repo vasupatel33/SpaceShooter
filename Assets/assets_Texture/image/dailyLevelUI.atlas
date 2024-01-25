@@ -1,0 +1,41 @@
+
+dailyLevelUI.webp
+size: 1424,844
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+level_daily_plane_bonus_arrow
+  rotate: false
+  xy: 716, 318
+  size: 85, 100
+  orig: 85, 100
+  offset: 0, 0
+  index: -1
+level_daily_plane_bottom_bg
+  rotate: false
+  xy: 716, 275
+  size: 67, 35
+  orig: 67, 35
+  offset: 0, 0
+  index: -1
+level_daily_plane_item_bg_type_1
+  rotate: false
+  xy: 4, 426
+  size: 704, 414
+  orig: 704, 414
+  offset: 0, 0
+  index: -1
+level_daily_plane_item_bg_type_2
+  rotate: false
+  xy: 4, 4
+  size: 704, 414
+  orig: 704, 414
+  offset: 0, 0
+  index: -1
+level_daily_plane_item_bg_type_3
+  rotate: false
+  xy: 716, 426
+  size: 704, 414
+  orig: 704, 414
+  offset: 0, 0
+  index: -1

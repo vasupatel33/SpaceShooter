@@ -1,0 +1,48 @@
+
+liuxing.webp
+size: 702,265
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+5_3_1
+  rotate: false
+  xy: 385, 76
+  size: 50, 50
+  orig: 50, 50
+  offset: 0, 0
+  index: -1
+liuxing_00000
+  rotate: false
+  xy: 234, 76
+  size: 149, 149
+  orig: 149, 149
+  offset: 0, 0
+  index: -1
+liuxxian2
+  rotate: true
+  xy: 0, 227
+  size: 38, 702
+  orig: 87, 702
+  offset: 25, 0
+  index: -1
+x2
+  rotate: false
+  xy: 385, 128
+  size: 98, 97
+  orig: 98, 97
+  offset: 0, 0
+  index: -1
+x3
+  rotate: false
+  xy: 0, 0
+  size: 232, 225
+  orig: 232, 225
+  offset: 0, 0
+  index: -1
+xx_0
+  rotate: false
+  xy: 234, 13
+  size: 62, 61
+  orig: 64, 64
+  offset: 1, 2
+  index: -1

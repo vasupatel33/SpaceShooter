@@ -1,0 +1,13 @@
+
+hugeUI2_small.webp
+size: 264,293
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+game_r_bg1
+  rotate: false
+  xy: 4, 4
+  size: 256, 285
+  orig: 256, 285
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,40 @@
+
+backgrounds3_normal.webp
+size: 2017,2048
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg3
+  rotate: false
+  xy: 1460, 1320
+  size: 553, 724
+  orig: 553, 724
+  offset: 0, 0
+  index: -1
+xingkong1
+  rotate: false
+  xy: 4, 4
+  size: 720, 2040
+  orig: 720, 2040
+  offset: 0, 0
+  index: -1
+xingkong2
+  rotate: false
+  xy: 732, 4
+  size: 720, 2040
+  orig: 720, 2040
+  offset: 0, 0
+  index: -1
+
+backgrounds3_normal2.webp
+size: 728,1397
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+bg2
+  rotate: false
+  xy: 4, 4
+  size: 720, 1389
+  orig: 720, 1389
+  offset: 0, 0
+  index: -1

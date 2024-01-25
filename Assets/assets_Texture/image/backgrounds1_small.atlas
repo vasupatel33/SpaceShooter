@@ -1,0 +1,20 @@
+
+backgrounds1_small.webp
+size: 736,1028
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+lv2
+  rotate: false
+  xy: 4, 4
+  size: 360, 1020
+  orig: 360, 1020
+  offset: 0, 0
+  index: -1
+lvse1
+  rotate: false
+  xy: 372, 4
+  size: 360, 1020
+  orig: 360, 1020
+  offset: 0, 0
+  index: -1

@@ -1,0 +1,55 @@
+
+special_event_shop_item_1.webp
+size: 692,330
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+1_1
+  rotate: true
+  xy: 389, 10
+  size: 106, 122
+  orig: 106, 122
+  offset: 0, 0
+  index: -1
+2_1
+  rotate: false
+  xy: 614, 241
+  size: 76, 87
+  orig: 76, 87
+  offset: 0, 0
+  index: -1
+2_2
+  rotate: false
+  xy: 264, 118
+  size: 180, 210
+  orig: 180, 210
+  offset: 0, 0
+  index: -1
+3_1
+  rotate: true
+  xy: 264, 10
+  size: 106, 123
+  orig: 106, 123
+  offset: 0, 0
+  index: -1
+3_2
+  rotate: true
+  xy: 2, 31
+  size: 297, 260
+  orig: 297, 260
+  offset: 0, 0
+  index: -1
+light3
+  rotate: false
+  xy: 446, 149
+  size: 166, 179
+  orig: 184, 179
+  offset: 11, 0
+  index: -1
+ljj1
+  rotate: false
+  xy: 513, 2
+  size: 119, 145
+  orig: 119, 145
+  offset: 0, 0
+  index: -1

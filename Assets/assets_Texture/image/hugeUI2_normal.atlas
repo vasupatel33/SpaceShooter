@@ -1,0 +1,13 @@
+
+hugeUI2_normal.webp
+size: 1032,1148
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+game_r_bg1
+  rotate: false
+  xy: 4, 4
+  size: 1024, 1140
+  orig: 1024, 1140
+  offset: 0, 0
+  index: -1
