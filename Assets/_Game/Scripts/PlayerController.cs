@@ -4,24 +4,38 @@ using UnityEngine;
 using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
-{               
+{
+    [SerializeField] GameObject bulletSpawnPoint;
+    Vector2 screenPos;
+    Vector2 maxScreenVal;
+    float objectHalfWidth;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        bulletSpawnPoint = GameObject.Find("AllBullets");
+        InvokeRepeating("SpawningBullet", 0.2f,0.2f);
+        screenPos = new Vector2(Screen.width, Screen.height);
+        maxScreenVal = Camera.main.ScreenToWorldPoint(screenPos);
+        objectHalfWidth = transform.localScale.x / 2f; // Assuming the object's width is its scale on the x-axis
+        Debug.Log("Max screen position = " + maxScreenVal.x + ", " + maxScreenVal.y);
     }
-    Vector3 startPos, endPos;
+
     // Update is called once per frame
     void Update()
     {
-        if(Input.GetMouseButton(0))
+        if (Input.GetMouseButton(0))
         {
             Vector3 currentPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            currentPos.z = 0;
-            Vector3 newPosition = Vector3.Lerp(this.transform.position, currentPos, 1f);
-            newPosition.x = Mathf.Clamp(newPosition.x, -2f, 2f);
-
-            this.transform.DOMove(newPosition,0.5f);
+            float newXPos = Mathf.Clamp(currentPos.x, -maxScreenVal.x + objectHalfWidth, maxScreenVal.x - objectHalfWidth);
+            float newYPos = Mathf.Clamp(currentPos.y, -maxScreenVal.y + (objectHalfWidth - 0.5f), maxScreenVal.y - (objectHalfWidth - 0.5f));
+            Vector3 newPosition = new Vector3(newXPos, newYPos, transform.position.z);
+            transform.DOMove(newPosition, 0.5f);
         }
+    }
+    public void SpawningBullet()
+    {
+        GameObject bullet = Instantiate(this.transform.GetChild(1).gameObject, this.transform.GetChild(0).transform.position, Quaternion.Euler(0, 0, 90), bulletSpawnPoint.transform);
+        Destroy(bullet,3f);
     }
 }
