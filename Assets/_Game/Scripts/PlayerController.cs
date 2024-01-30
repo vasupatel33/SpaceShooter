@@ -14,7 +14,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         bulletSpawnPoint = GameObject.Find("AllBullets");
-        InvokeRepeating("SpawningBullet", 0.2f,0.2f);
+        InvokeRepeating("SpawningBullet", 0.4f,0.4f);
         screenPos = new Vector2(Screen.width, Screen.height);
         maxScreenVal = Camera.main.ScreenToWorldPoint(screenPos);
         objectHalfWidth = transform.localScale.x / 2f; // Assuming the object's width is its scale on the x-axis
@@ -36,6 +36,6 @@ public class PlayerController : MonoBehaviour
     public void SpawningBullet()
     {
         GameObject bullet = Instantiate(this.transform.GetChild(1).gameObject, this.transform.GetChild(0).transform.position, Quaternion.Euler(0, 0, 90), bulletSpawnPoint.transform);
-        Destroy(bullet,3f);
+        Destroy(bullet,4f);
     }
 }
