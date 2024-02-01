@@ -5,12 +5,11 @@ using UnityEngine;
 
 public class BGScrolling : MonoBehaviour
 {
+    float speed = 0.03f; // Adjust the speed here
 
-    [Range(-1, 1)]
-    public float speed = 0.5f;
-    float offset;
-    Material mat;
-    
+    private Material mat;
+    private float accumulatedTime = 0f;
+    private Vector2 lastOffset = Vector2.zero; // Track the last applied offset
 
     private void Start()
     {
@@ -18,23 +17,30 @@ public class BGScrolling : MonoBehaviour
         if (renderer != null)
         {
             mat = renderer.material;
+            StartCoroutine(UpdateTextureOffset());
         }
         else
         {
             Debug.LogError("Renderer component not found!");
         }
-        InvokeRepeating("BGMoving",0.2f,0.2f);
     }
-    public void BGMoving()
+    private IEnumerator UpdateTextureOffset()
     {
-        offset = Time.deltaTime * speed;
-        Debug.Log("offset = " + offset);
-        mat.SetTextureOffset("_MainTex", new Vector2(0, offset));
-        mat.DOOffset(new Vector2(0, offset), 0.3f);
-    }
-    private void Update()
-    {
-        Debug.Log("Time = "+Time.deltaTime);
-        
+        while (true)
+        {
+            //float deltaTime = Time.deltaTime;
+            accumulatedTime += Time.deltaTime * speed;
+
+            Vector2 newOffset = new Vector2(0, accumulatedTime);
+            if (newOffset != lastOffset) // Only update if the offset has changed
+            {
+                mat.SetTextureOffset("_MainTex", newOffset);
+                mat.DOOffset(newOffset, 0.3f);
+                lastOffset = newOffset;
+            }
+
+            // Wait for the next frame
+            yield return null;
+        }
     }
 }

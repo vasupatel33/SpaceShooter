@@ -1,11 +1,9 @@
 using DG.Tweening;
 using System.Collections;
 using UnityEngine;
-
-public class EnemyHandler : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject EnemyObject, EnemyGameArea, EnemySpawningPoint1, EnemySpawningPoint2, EnemyParent;
-
     private void Start()
     {
         // Adjust the time scale to speed up the animation
@@ -13,7 +11,6 @@ public class EnemyHandler : MonoBehaviour
 
         StartCoroutine(SpawnAndMoveEnemies());
     }
-
     IEnumerator SpawnAndMoveEnemies()
     {
         float spawnDelay = 0.8f; // Adjust the delay between each object spawn
@@ -29,7 +26,6 @@ public class EnemyHandler : MonoBehaviour
             StartCoroutine(EnemyMove(g, EnemyGameArea.transform.GetChild(i).position));
         }
     }
-
     IEnumerator EnemyMove(GameObject obj, Vector3 targetPosition)
     {
         // Define circular motion parameters
@@ -70,9 +66,6 @@ public class EnemyHandler : MonoBehaviour
         // Move the object to the target position
         obj.transform.DOMove(targetPosition, 2f);
     }
-
-
-
 
 
 

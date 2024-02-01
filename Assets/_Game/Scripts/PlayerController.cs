@@ -10,11 +10,18 @@ public class PlayerController : MonoBehaviour
     Vector2 maxScreenVal;
     float objectHalfWidth;
 
+    public static PlayerController instance;
+
+
+    private void Awake()
+    {
+        instance = this;
+    }
     // Start is called before the first frame update
     void Start()
     {
         bulletSpawnPoint = GameObject.Find("AllBullets");
-        InvokeRepeating("SpawningBullet", 0.4f,0.4f);
+        //InvokeRepeating("SpawningBullet", 0.4f,0.4f);
         screenPos = new Vector2(Screen.width, Screen.height);
         maxScreenVal = Camera.main.ScreenToWorldPoint(screenPos);
         objectHalfWidth = transform.localScale.x / 2f; // Assuming the object's width is its scale on the x-axis
@@ -31,6 +38,10 @@ public class PlayerController : MonoBehaviour
             float newYPos = Mathf.Clamp(currentPos.y, -maxScreenVal.y + (objectHalfWidth - 0.5f), maxScreenVal.y - (objectHalfWidth - 0.5f));
             Vector3 newPosition = new Vector3(newXPos, newYPos, transform.position.z);
             transform.DOMove(newPosition, 0.5f);
+        }
+        if(Input.GetMouseButtonDown(0))
+        {
+            InvokeRepeating("SpawningBullet", 0.4f, 0.4f);
         }
     }
     public void SpawningBullet()
