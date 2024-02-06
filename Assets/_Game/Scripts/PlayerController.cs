@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] GameObject bulletSpawnPoint;
+    [SerializeField] GameObject bulletSpawnPoint, BulletPref;
     Vector2 screenPos;
     Vector2 maxScreenVal;
     float objectHalfWidth;
@@ -46,7 +46,7 @@ public class PlayerController : MonoBehaviour
     }
     public void SpawningBullet()
     {
-        GameObject bullet = Instantiate(this.transform.GetChild(1).gameObject, this.transform.GetChild(0).transform.position, Quaternion.Euler(0, 0, 90), bulletSpawnPoint.transform);
+        GameObject bullet = Instantiate(BulletPref, this.transform.GetChild(0).transform.position, Quaternion.Euler(0, 0, 90), bulletSpawnPoint.transform);
         Destroy(bullet,4f);
     }
 }

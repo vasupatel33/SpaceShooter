@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class EnemyHandling : MonoBehaviour
 {
-    [SerializeField] int Health = 10;
+    public int Health = 10;
+    public Color HitColor;
 
     public static EnemyHandling Instance;
 
