@@ -26,6 +26,7 @@ public class PlayerController : MonoBehaviour
         maxScreenVal = Camera.main.ScreenToWorldPoint(screenPos);
         objectHalfWidth = transform.localScale.x / 2f; // Assuming the object's width is its scale on the x-axis
         Debug.Log("Max screen position = " + maxScreenVal.x + ", " + maxScreenVal.y);
+        InvokeRepeating("SpawningBullet", 0.4f, 0.4f);
     }
 
     // Update is called once per frame
@@ -38,10 +39,6 @@ public class PlayerController : MonoBehaviour
             float newYPos = Mathf.Clamp(currentPos.y, -maxScreenVal.y + (objectHalfWidth - 0.5f), maxScreenVal.y - (objectHalfWidth - 0.5f));
             Vector3 newPosition = new Vector3(newXPos, newYPos, transform.position.z);
             transform.DOMove(newPosition, 0.5f);
-        }
-        if(Input.GetMouseButtonDown(0))
-        {
-            InvokeRepeating("SpawningBullet", 0.4f, 0.4f);
         }
     }
     public void SpawningBullet()
