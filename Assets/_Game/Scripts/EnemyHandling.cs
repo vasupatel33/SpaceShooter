@@ -11,6 +11,7 @@ public class EnemyHandling : MonoBehaviour
     [SerializeField] Color DefaultColor;
 
     public static EnemyHandling Instance;
+    public bool isSpecialObj;
 
     private void Awake()
     {
@@ -31,7 +32,7 @@ public class EnemyHandling : MonoBehaviour
             if (Health == 0)
             {
                 Debug.Log("Enemy Destroyed");
-                GameObject _particle = Instantiate(Destroytparticle.gameObject, collision.transform.position, Quaternion.identity);
+                GameObject _particle = Instantiate(Destroytparticle.gameObject, collision.contacts[0].point, Quaternion.identity);
                 Debug.Log("Particle instantiated at: " + this.transform.position);
                 Destroy(collision.gameObject);
                 Destroy(this.gameObject);

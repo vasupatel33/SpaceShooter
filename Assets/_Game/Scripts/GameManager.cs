@@ -1,14 +1,15 @@
 using DG.Tweening;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject EnemyObject, EnemyGameArea, EnemySpawningPoint1, EnemySpawningPoint2, EnemyParent;
+    [SerializeField] List<GameObject> AllEnemies, AllSelectedSpecialEnemies;
     private void Start()
     {
         // Adjust the time scale to speed up the animation
         Time.timeScale = 2f;
-
         StartCoroutine(SpawnAndMoveEnemies());
     }
     IEnumerator SpawnAndMoveEnemies()
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
         {
             Vector3 spawnPoint = i % 2 == 0 ? EnemySpawningPoint1.transform.position : EnemySpawningPoint2.transform.position;
             GameObject g = Instantiate(EnemyObject, spawnPoint, Quaternion.identity, EnemyParent.transform);
+            AllEnemies.Add(g);
 
             yield return new WaitForSeconds(spawnDelay); // Wait for the specified spawn delay before moving the enemy
 
@@ -66,7 +68,19 @@ public class GameManager : MonoBehaviour
         // Move the object to the target position
         obj.transform.DOMove(targetPosition, 2f);
     }
+    int val;
 
-
-
+    public void SelectObjFromList()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            do
+            {
+                val = Random.Range(0, AllEnemies.Count);
+                Debug.Log("Val = " + val);
+            } while (AllSelectedSpecialEnemies.Contains(AllEnemies[val]));
+            AllSelectedSpecialEnemies.Add(AllEnemies[val]);
+            AllSelectedSpecialEnemies[val].GetComponent<EnemyHandling>().isSpecialObj = true;
+        }
+    }
 }
