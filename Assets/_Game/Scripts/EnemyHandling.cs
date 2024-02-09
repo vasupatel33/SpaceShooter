@@ -34,6 +34,11 @@ public class EnemyHandling : MonoBehaviour
                 Debug.Log("Enemy Destroyed");
                 GameObject _particle = Instantiate(Destroytparticle.gameObject, collision.contacts[0].point, Quaternion.identity);
                 Debug.Log("Particle instantiated at: " + this.transform.position);
+
+                if(isSpecialObj == true)
+                {
+
+                }
                 Destroy(collision.gameObject);
                 Destroy(this.gameObject);
             }

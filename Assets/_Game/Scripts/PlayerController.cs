@@ -5,7 +5,7 @@ using DG.Tweening;
 
 public class PlayerController : MonoBehaviour
 {
-    [SerializeField] GameObject bulletSpawnPoint, BulletPref;
+    [SerializeField] GameObject bulletSpawnPoint1, bulletSpawnPoint2, bulletSpawnPoint3, bulletSpawnPoint4, bulletSpawnPoint5, BulletPref;
     Vector2 screenPos;
     Vector2 maxScreenVal;
     float objectHalfWidth;
@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        bulletSpawnPoint = GameObject.Find("AllBullets");
+        bulletSpawnPoint1 = GameObject.Find("AllBullets");
         //InvokeRepeating("SpawningBullet", 0.4f,0.4f);
         screenPos = new Vector2(Screen.width, Screen.height);
         maxScreenVal = Camera.main.ScreenToWorldPoint(screenPos);
@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour
     }
     public void SpawningBullet()
     {
-        GameObject bullet = Instantiate(BulletPref, this.transform.GetChild(0).transform.position, Quaternion.Euler(0, 0, 90), bulletSpawnPoint.transform);
+        GameObject bullet = Instantiate(BulletPref, this.transform.GetChild(0).transform.position, Quaternion.Euler(0, 0, 90), bulletSpawnPoint1.transform);
         Destroy(bullet,4f);
     }
 }

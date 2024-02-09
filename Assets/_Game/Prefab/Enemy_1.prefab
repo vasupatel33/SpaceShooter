@@ -14707,7 +14707,7 @@ GameObject:
   - component: {fileID: 6369028538548195400}
   - component: {fileID: 8920122702366223393}
   m_Layer: 0
-  m_Name: specialObj_0
+  m_Name: specialBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24583,7 +24583,7 @@ GameObject:
   - component: {fileID: 5241752359541607997}
   - component: {fileID: 843303948859673860}
   m_Layer: 0
-  m_Name: specialObj_1
+  m_Name: specialShield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
