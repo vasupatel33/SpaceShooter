@@ -5,12 +5,16 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     [SerializeField] GameObject EnemyObject, EnemyGameArea, EnemySpawningPoint1, EnemySpawningPoint2, EnemyParent;
-    [SerializeField] List<GameObject> AllEnemies, AllSelectedSpecialEnemies;
+    [SerializeField] List<GameObject> AllEnemies, AllSelectedEnemyForPower, AllSelectedEnemyForFire;
+
+    public static GameManager Instance;
     private void Start()
     {
         // Adjust the time scale to speed up the animation
         Time.timeScale = 2f;
         StartCoroutine(SpawnAndMoveEnemies());
+        SelectEmenyForPower();
+        SelectEnemyForFire();
     }
     IEnumerator SpawnAndMoveEnemies()
     {
@@ -70,7 +74,7 @@ public class GameManager : MonoBehaviour
     }
     int val;
 
-    public void SelectObjFromList()
+    public void SelectEmenyForPower()
     {
         for (int i = 0; i < 5; i++)
         {
@@ -78,9 +82,29 @@ public class GameManager : MonoBehaviour
             {
                 val = Random.Range(0, AllEnemies.Count);
                 Debug.Log("Val = " + val);
-            } while (AllSelectedSpecialEnemies.Contains(AllEnemies[val]));
-            AllSelectedSpecialEnemies.Add(AllEnemies[val]);
-            AllSelectedSpecialEnemies[val].GetComponent<EnemyHandling>().isSpecialObj = true;
+            } while (AllSelectedEnemyForPower.Contains(AllEnemies[val]));
+            AllSelectedEnemyForPower.Add(AllEnemies[val]);
+            AllSelectedEnemyForPower[val].GetComponent<EnemyHandling>().isObjSpecial = true;
+        } 
+    }
+    public void SelectEnemyForFire()
+    {
+        for (int i = 0; i < 5; i++)
+        {
+            do
+            {
+                val = Random.Range(0, AllEnemies.Count);
+                Debug.Log("Val = " + val);
+            } while (AllSelectedEnemyForFire.Contains(AllEnemies[val]));
+            AllSelectedEnemyForFire.Add(AllEnemies[val]);
+            AllSelectedEnemyForFire[val].GetComponent<EnemyHandling>().isObjFire = true;
         }
+    }
+    [SerializeField] List<GameObject> AllSpecialPowers;
+
+    public void GenerateSpecialPower(Vector3 spawnPos)
+    {
+        int val = Random.Range(0, AllSpecialPowers.Count);
+        Instantiate(AllSpecialPowers[val], spawnPos, Quaternion.identity);
     }
 }

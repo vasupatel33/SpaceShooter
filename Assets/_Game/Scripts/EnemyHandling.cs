@@ -9,9 +9,10 @@ public class EnemyHandling : MonoBehaviour
 
     [SerializeField] ParticleSystem Destroytparticle, collisionParticle;
     [SerializeField] Color DefaultColor;
+    [SerializeField] GameObject FirePrefab;
 
     public static EnemyHandling Instance;
-    public bool isSpecialObj;
+    public bool isObjSpecial, isObjFire;
 
     private void Awake()
     {
@@ -20,6 +21,14 @@ public class EnemyHandling : MonoBehaviour
     private void Start()
     {
         DefaultColor = this.transform.GetComponent<SpriteRenderer>().color;
+        if (isObjFire)
+        {
+            
+        }
+    }
+    public void EnemyFireBullet()
+    {
+
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -35,10 +44,12 @@ public class EnemyHandling : MonoBehaviour
                 GameObject _particle = Instantiate(Destroytparticle.gameObject, collision.contacts[0].point, Quaternion.identity);
                 Debug.Log("Particle instantiated at: " + this.transform.position);
 
-                if(isSpecialObj == true)
+                if(isObjSpecial == true)
                 {
-
+                    Debug.Log("Special obj Destroyed");
+                    GameManager.Instance.GenerateSpecialPower(collision.transform.position);
                 }
+                
                 Destroy(collision.gameObject);
                 Destroy(this.gameObject);
             }
