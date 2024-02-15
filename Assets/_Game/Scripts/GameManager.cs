@@ -13,8 +13,8 @@ public class GameManager : MonoBehaviour
         // Adjust the time scale to speed up the animation
         Time.timeScale = 2f;
         StartCoroutine(SpawnAndMoveEnemies());
-        SelectEmenyForPower();
-        SelectEnemyForFire();
+        //SelectEmenyForPower();
+        //SelectEnemyForFire();
     }
     IEnumerator SpawnAndMoveEnemies()
     {
@@ -76,6 +76,7 @@ public class GameManager : MonoBehaviour
 
     public void SelectEmenyForPower()
     {
+        AllSelectedEnemyForPower.Clear();
         for (int i = 0; i < 5; i++)
         {
             do
@@ -89,6 +90,7 @@ public class GameManager : MonoBehaviour
     }
     public void SelectEnemyForFire()
     {
+        AllSelectedEnemyForFire.Clear();
         for (int i = 0; i < 5; i++)
         {
             do

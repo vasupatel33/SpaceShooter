@@ -15050,7 +15050,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4caa7a4bc09632e48bbb55fb38b6dccc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  EnemyObject: {fileID: 7427857457917260023, guid: c94ed56ff4fa0414db8cf07c82deda77, type: 3}
+  EnemyObject: {fileID: 4450544977556615148, guid: 1d1feeb13da45d540ad45b5fbdd6c64d, type: 3}
   EnemyGameArea: {fileID: 1552072747224488891}
   EnemySpawningPoint1: {fileID: 581669066}
   EnemySpawningPoint2: {fileID: 1044083455}
