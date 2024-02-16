@@ -15555,6 +15555,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: specialBullet
       objectReference: {fileID: 0}
+    - target: {fileID: 2293982399866663255, guid: aab3e60bd6080074397cfe31ff95dd5d, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 2293982399866663255, guid: aab3e60bd6080074397cfe31ff95dd5d, type: 3}
+      propertyPath: m_TagString
+      value: specialBullet
+      objectReference: {fileID: 0}
     - target: {fileID: 6634389720288515664, guid: aab3e60bd6080074397cfe31ff95dd5d, type: 3}
       propertyPath: m_LinearDrag
       value: 1
@@ -30558,6 +30566,14 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4899809009026843716, guid: f829d41cb7ac90f40b52a7a02305ac2a, type: 3}
       propertyPath: m_Name
+      value: specialShield
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899809009026843716, guid: f829d41cb7ac90f40b52a7a02305ac2a, type: 3}
+      propertyPath: m_Layer
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899809009026843716, guid: f829d41cb7ac90f40b52a7a02305ac2a, type: 3}
+      propertyPath: m_TagString
       value: specialShield
       objectReference: {fileID: 0}
     - target: {fileID: 7569255318121734026, guid: f829d41cb7ac90f40b52a7a02305ac2a, type: 3}

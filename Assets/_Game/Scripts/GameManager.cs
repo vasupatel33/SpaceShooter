@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
         // Adjust the time scale to speed up the animation
         Time.timeScale = 2f;
         StartCoroutine(SpawnAndMoveEnemies());
-        //SelectEmenyForPower();
+        SelectEmenyForPower();
         //SelectEnemyForFire();
     }
     IEnumerator SpawnAndMoveEnemies()
@@ -84,9 +84,10 @@ public class GameManager : MonoBehaviour
                 val = Random.Range(0, AllEnemies.Count);
                 Debug.Log("Val = " + val);
             } while (AllSelectedEnemyForPower.Contains(AllEnemies[val]));
+
             AllSelectedEnemyForPower.Add(AllEnemies[val]);
-            AllSelectedEnemyForPower[val].GetComponent<EnemyHandling>().isObjSpecial = true;
-        } 
+            AllSelectedEnemyForPower[AllSelectedEnemyForPower.Count - 1].GetComponent<EnemyHandling>().isObjSpecial = true;
+        }
     }
     public void SelectEnemyForFire()
     {

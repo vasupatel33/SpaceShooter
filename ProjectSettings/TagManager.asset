@@ -6,6 +6,8 @@ TagManager:
   tags:
   - bullet
   - enemy
+  - specialBullet
+  - specialShield
   layers:
   - Default
   - TransparentFX
@@ -15,8 +17,8 @@ TagManager:
   - UI
   - Player
   - Bullet
-  - 
-  - 
+  - SpecialObj
+  - Enemy
   - 
   - 
   - 

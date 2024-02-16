@@ -58,9 +58,7 @@ public class EnemyHandling : MonoBehaviour
                 this.transform.GetComponent<SpriteRenderer>().color = HitColor;
 
                 GameObject _particle = Instantiate(collisionParticle.gameObject, collision.transform.position, Quaternion.identity);
-                Debug.Log("Particle instantiated at contact point: " + collision.contacts[0].point);
                 Destroy(_particle, 1.5f);
-                Debug.Log("particle played");
                 StartCoroutine(ColorReset());
                 Destroy(collision.gameObject);
             }

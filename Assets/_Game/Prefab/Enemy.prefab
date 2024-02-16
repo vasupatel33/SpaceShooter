@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4411988694161878913}
   - component: {fileID: 5660489106071505260}
   - component: {fileID: 2291522695369328991}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MagicNova
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4821,7 +4821,7 @@ GameObject:
   - component: {fileID: 1727406334700532390}
   - component: {fileID: 376659737909789363}
   - component: {fileID: 7435883923451551690}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sparks
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9684,13 +9684,13 @@ GameObject:
   m_Component:
   - component: {fileID: 4723575393595366740}
   - component: {fileID: 5453116150279412311}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: enemyFireBullet
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4723575393595366740
 Transform:
   m_ObjectHideFlags: 0
@@ -9769,7 +9769,7 @@ GameObject:
   - component: {fileID: 8837179120235397567}
   - component: {fileID: 2056206801563040916}
   - component: {fileID: 8255774011109342700}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: MagicChargeOrbs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14616,7 +14616,7 @@ GameObject:
   - component: {fileID: 6383863756201669936}
   - component: {fileID: 218856277412269602}
   - component: {fileID: 7518487393257782780}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: DestroyParti
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19561,7 +19561,7 @@ GameObject:
   - component: {fileID: 1039512786699930013}
   - component: {fileID: 4509885345582448705}
   - component: {fileID: 4008101226134790299}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LongLightning
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24426,7 +24426,7 @@ GameObject:
   - component: {fileID: 8611331562906226493}
   - component: {fileID: 3757075268996365011}
   - component: {fileID: 5667093683271503501}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Enemy
   m_TagString: enemy
   m_Icon: {fileID: 0}
@@ -24619,7 +24619,7 @@ GameObject:
   - component: {fileID: 3198873882105644407}
   - component: {fileID: 5124035489374544865}
   - component: {fileID: 1274901610563135038}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Glow
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -29501,7 +29501,7 @@ GameObject:
   - component: {fileID: 8083600386515420729}
   - component: {fileID: 6124848058155853551}
   - component: {fileID: 3208848933555393340}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BulletCollidiingParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -34367,7 +34367,7 @@ GameObject:
   - component: {fileID: 5948683043045604869}
   - component: {fileID: 877548281728988818}
   - component: {fileID: 8662834200650594202}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CentralOrb
   m_TagString: Untagged
   m_Icon: {fileID: 0}
