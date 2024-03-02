@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
         // Adjust the time scale to speed up the animation
         Time.timeScale = 2f;
         StartCoroutine(SpawnAndMoveEnemies());
-        SelectEmenyForPower();
+        //SelectEmenyForPower();
         //SelectEnemyForFire();
     }
     IEnumerator SpawnAndMoveEnemies()
@@ -76,7 +76,26 @@ public class GameManager : MonoBehaviour
 
     public void SelectEmenyForPower()
     {
-        AllSelectedEnemyForPower.Clear();
+        //AllSelectedEnemyForPower.Clear();
+        //for (int i = 0; i < 5; i++)
+        //{
+        //    do
+        //    {
+        //        val = Random.Range(0, AllEnemies.Count);
+        //        Debug.Log("Val = " + val);
+        //    } while (AllSelectedEnemyForPower.Contains(AllEnemies[val]));
+
+        //    //AllSelectedEnemyForPower.Add(AllEnemies[val]);
+        //    //AllSelectedEnemyForPower[AllSelectedEnemyForPower.Count - 1].GetComponent<EnemyHandling>().isObjSpecial = true;
+        //}
+
+
+
+
+
+
+
+
         for (int i = 0; i < 5; i++)
         {
             do
@@ -84,11 +103,13 @@ public class GameManager : MonoBehaviour
                 val = Random.Range(0, AllEnemies.Count);
                 Debug.Log("Val = " + val);
             } while (AllSelectedEnemyForPower.Contains(AllEnemies[val]));
-
             AllSelectedEnemyForPower.Add(AllEnemies[val]);
-            AllSelectedEnemyForPower[AllSelectedEnemyForPower.Count - 1].GetComponent<EnemyHandling>().isObjSpecial = true;
+            //AllEnemies[val].GetComponent<BrickManager>().isSpecialObj = true;
         }
     }
+
+
+
     public void SelectEnemyForFire()
     {
         AllSelectedEnemyForFire.Clear();
