@@ -21,37 +21,50 @@ public class EnemyHandling : MonoBehaviour
     private void Start()
     {
         DefaultColor = this.transform.GetComponent<SpriteRenderer>().color;
-        if (isObjFire)
+        StartCoroutine(CheckingForFire());
+    }
+    IEnumerator CheckingForFire()
+    {
+        yield return new WaitForSeconds(4f);
+        if (isObjFire) 
         {
-            
+            StartCoroutine(RandomFire());
         }
     }
-    public void EnemyFireBullet()
+    IEnumerator RandomFire()
     {
-
+        while (true)
+        {
+            yield return new WaitForSeconds(Random.Range(3, 10));
+            GameManager.Instance.EnemyFireBullet(this.gameObject);
+        }
     }
-
     private void OnCollisionEnter2D(Collision2D collision)
     {
-        Debug.Log("Collision");
         if (collision.gameObject.tag == "bullet")
         {
             Health--;
 
             if (Health == 0)
             {
-                Debug.Log("Enemy Destroyed");
                 GameObject _particle = Instantiate(Destroytparticle.gameObject, collision.contacts[0].point, Quaternion.identity);
-                Debug.Log("Particle instantiated at: " + this.transform.position);
-
+                
                 if(isObjSpecial == true)
                 {
-                    Debug.Log("Special obj Destroyed");
-                    GameManager.Instance.GenerateSpecialPower(collision.transform.position);
+                    Debug.Log("Special obj Destroyed" + collision.gameObject.transform.position);
+                    if (this.gameObject != null)
+                    {
+                        GenerateSpecialPowerEnemy(collision.transform.position);
+                    }
+                    else
+                    {
+                        Debug.Log("Null Object");
+                    }
                 }
-                
+                Debug.Log("Destroyed enemy");
                 Destroy(collision.gameObject);
                 Destroy(this.gameObject);
+                GameManager.Instance.CheckAvailableEnemy();
             }
             else
             {
@@ -61,6 +74,7 @@ public class EnemyHandling : MonoBehaviour
                 Destroy(_particle, 1.5f);
                 StartCoroutine(ColorReset());
                 Destroy(collision.gameObject);
+                GameManager.Instance.CheckAvailableEnemy();
             }
         }
     }
@@ -69,6 +83,19 @@ public class EnemyHandling : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         this.transform.GetComponent<SpriteRenderer>().color = DefaultColor;
-        Debug.Log("Color Reset");
+    }
+    public void GenerateSpecialPowerEnemy(Vector3 pos)
+    {
+        // Check if GameManager.Instance is not null
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.GenerateSpecialPower(pos);
+        }
+        else
+        {
+            // GameManager.Instance is null
+            Debug.LogError("GameManager.Instance is null!");
+        }
+
     }
 }

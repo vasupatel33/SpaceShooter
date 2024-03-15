@@ -2,21 +2,46 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+
 public class GameManager : MonoBehaviour
 {
-    [SerializeField] GameObject EnemyObject, EnemyGameArea, EnemySpawningPoint1, EnemySpawningPoint2, EnemyParent;
-    [SerializeField] List<GameObject> AllEnemies, AllSelectedEnemyForPower, AllSelectedEnemyForFire;
+    [SerializeField] GameObject EnemyObject, EnemySpawningPoint1, EnemySpawningPoint2, EnemyParent, GameOverPanel, FirePrefab;
+    [SerializeField] List<GameObject> AllEnemies, AllSelectedEnemyForPower, AllSelectedEnemyForFire, AlllEnemyGameArea;
+
+    private bool isBulletFired;
 
     public static GameManager Instance;
+
+    public void CheckAvailableEnemy()
+    {
+        for(int i = 0; i < AllEnemies.Count; i++)
+        {
+            if (AllEnemies[i] == null)
+            {
+                AllEnemies.Remove(AllEnemies[i]);
+            }
+        }
+        Debug.Log("Ememy = "+AllEnemies.Count);
+        if (AllEnemies.Count == 1)
+        {
+            SceneManager.LoadScene(1);
+        }
+    }
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         // Adjust the time scale to speed up the animation
+        isBulletFired = false;
         Time.timeScale = 2f;
-        StartCoroutine(SpawnAndMoveEnemies());
-        //SelectEmenyForPower();
+        int val = Random.Range(0, AlllEnemyGameArea.Count);
+        StartCoroutine(SpawnAndMoveEnemies(AlllEnemyGameArea[val]));
         //SelectEnemyForFire();
     }
-    IEnumerator SpawnAndMoveEnemies()
+    IEnumerator SpawnAndMoveEnemies(GameObject EnemyGameArea)
     {
         float spawnDelay = 0.8f; // Adjust the delay between each object spawn
 
@@ -71,6 +96,22 @@ public class GameManager : MonoBehaviour
 
         // Move the object to the target position
         obj.transform.DOMove(targetPosition, 2f);
+        
+        StartCoroutine(WaitUntillEnemySet());
+    }
+    IEnumerator WaitUntillEnemySet()
+    {
+        if (!isBulletFired)
+        {
+            isBulletFired = true;
+            yield return new WaitForSeconds(3f);
+            SelectEmenyForPower();
+            SelectEnemyForFire();
+            Debug.Log("Bullet fired");
+            yield return new WaitForSeconds(4f);
+            PlayerController.instance.SpawnBulletMethodForOtherScript();
+            
+        }
     }
     int val;
 
@@ -89,26 +130,17 @@ public class GameManager : MonoBehaviour
         //    //AllSelectedEnemyForPower[AllSelectedEnemyForPower.Count - 1].GetComponent<EnemyHandling>().isObjSpecial = true;
         //}
 
-
-
-
-
-
-
-
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 3; i++)
         {
             do
             {
                 val = Random.Range(0, AllEnemies.Count);
-                Debug.Log("Val = " + val);
+                
             } while (AllSelectedEnemyForPower.Contains(AllEnemies[val]));
             AllSelectedEnemyForPower.Add(AllEnemies[val]);
-            //AllEnemies[val].GetComponent<BrickManager>().isSpecialObj = true;
+            AllSelectedEnemyForPower[i].GetComponent<EnemyHandling>().isObjSpecial = true;
         }
     }
-
-
 
     public void SelectEnemyForFire()
     {
@@ -118,11 +150,19 @@ public class GameManager : MonoBehaviour
             do
             {
                 val = Random.Range(0, AllEnemies.Count);
-                Debug.Log("Val = " + val);
+
             } while (AllSelectedEnemyForFire.Contains(AllEnemies[val]));
             AllSelectedEnemyForFire.Add(AllEnemies[val]);
-            AllSelectedEnemyForFire[val].GetComponent<EnemyHandling>().isObjFire = true;
+            AllSelectedEnemyForFire[i].GetComponent<EnemyHandling>().isObjFire = true;
         }
+    }
+    public void EnemyFireBullet(GameObject obj)
+    {
+        Debug.Log("Fire spawnned");
+        GameObject bullet = Instantiate(FirePrefab, obj.transform.GetChild(0).position, Quaternion.Euler(0, 0, 90));
+        bullet.GetComponent<Rigidbody2D>().AddForce( new Vector2(Random.Range(20,-50), Random.Range(20, -50)));
+        bullet.transform.localScale = new Vector3(1, 1, 0);
+        Destroy(bullet, 10f);
     }
     [SerializeField] List<GameObject> AllSpecialPowers;
 
@@ -130,5 +170,25 @@ public class GameManager : MonoBehaviour
     {
         int val = Random.Range(0, AllSpecialPowers.Count);
         Instantiate(AllSpecialPowers[val], spawnPos, Quaternion.identity);
+    }
+    public void GameOverPanelOpen()
+    {
+        GameOverPanel.SetActive(true);
+        Time.timeScale = 0;
+    }
+    public void GameOverPanelClose()
+    {
+        GameOverPanel.SetActive(false);
+        Time.timeScale = 1;
+    }
+    public void OnClick_ResetBtnGameOverPanel()
+    {
+        SceneManager.LoadScene(1);
+        Time.timeScale = 1;
+    }
+    public void OnClick_HomeBtnGameOverPanel()
+    {
+        SceneManager.LoadScene(0);
+        Time.timeScale = 1;
     }
 }

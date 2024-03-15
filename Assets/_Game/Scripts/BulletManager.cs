@@ -19,6 +19,6 @@ public class BulletManager : MonoBehaviour
     }
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log("Trigger");
+        
     }
 }
